@@ -109,18 +109,13 @@
     const poiMarkers = new Map();
     let currentUserLocation = null;
 
-    // Find the bounding coordinates of all POIs
-    const topLeft = {
-        lat: Math.max(...geofences.map(g => g.lat)),
-        lng: Math.min(...geofences.map(g => g.lng))
-    };
-    const bottomRight = {
-        lat: Math.min(...geofences.map(g => g.lat)), 
-        lng: Math.max(...geofences.map(g => g.lng))
-    };
+    // Find the center point of the outer perimeter of all geofences
+    const bounds = geofences.map(geofence => [geofence.lat, geofence.lng]);
+    const center = bounds.reduce((acc, val) => [acc[0] + val[0], acc[1] + val[1]], [0, 0]);
+    const avgCenter = [center[0] / bounds.length, center[1] / bounds.length];
     
     // Create the map and set the initial view to a default location
-    const map = L.map('map').setView([52.0917, 5.1214], 400);
+    const map = L.map('map').setView(avgCenter, 14);
 
     // Add a tile layer (OpenStreetMap) to the map
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -189,7 +184,7 @@
         }).addTo(map).bindPopup('You are here!');
 
         // Center map on user's location
-        map.setView(e.latlng);
+        //map.setView(e.latlng);
 
         // Check geofences and play audio if inside one
         checkGeofences(e.latlng.lat, e.latlng.lng);
