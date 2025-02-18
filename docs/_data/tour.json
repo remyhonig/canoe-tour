@@ -1,0 +1,8 @@
+geofences: [
+  { id: 9182, name: "Weerdsingel", lat: 52.096293992092, lng: 5.1160400014130, radius: 50, audio: "1.mp3" },
+  { id: 7983, name: "Winkel van Sinkel", lat: 52.091677654658, lng: 5.1178635431593, radius: 50, audio: "1.mp3" },
+  { id: 7153, name: "Ledig Erf", lat: 52.081863053248, lng: 5.1232912615339, radius: 50, audio: "1.mp3" },
+  { id: 6368, name: "Stadsschouwburg", lat: 52.089303352261, lng: 5.1294483966069, radius: 50, audio: "1.mp3" },
+  { id: 237,  name: "Lepelenburg", lat: 52.093220883465, lng: 5.1279037494806, radius: 50, audio: "1.mp3" },
+  { id: 2259, name: "Wietboot", lat: 52.09787626394,  lng: 5.1266165435420, radius: 50, audio: "1.mp3" }
+]
